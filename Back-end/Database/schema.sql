@@ -6,3 +6,11 @@ CREATE TABLE users (
   username VARCHAR(255),
   email VARCHAR(255)
 );
+
+CREATE TABLE authTable (
+id Serial FOREIGN Key,
+username VARCHAR(255),
+email VARCHAR(255),
+password VARCHAR(255),
+token VARCHAR(64)
+);
