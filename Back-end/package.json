@@ -1,0 +1,12 @@
+{
+  "name": "tct-auth-demo",
+  "version": "1.0.0",
+  "description": "Minimal DB setup for TCT user auth",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "pg": "^8.11.3"
+  }
+}
