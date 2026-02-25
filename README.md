@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -14,3 +15,7 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+=======
+# TCT
+The-Collaboration-Tool (TCT) is a web-based platform designed to facilitate seamless collaboration among teams. This document outlines the technical specifications and architectural considerations for the Basic (Minimum Viable Product - MVP) version of TCT. 
+>>>>>>> 3a5085d3ee4905073108a1850436f9e8781eacd2
