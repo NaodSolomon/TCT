@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Particles from '../asset/background.jsx';
 import { motion } from "framer-motion";
 import { useState } from 'react';
+import axios from 'axios';
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -10,20 +11,45 @@ function Login() {
 
 
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Logging in with:", { email, password });
 
+
+    const userData = {
+
+      password: password,
+      email: email
+    };
+
+
+
+    try {
+
+      const response = await axios.post('http://localhost:5000/login', userData);/* will be replaced by the backend URL*/
+
+      console.log("Success:", response.data);
+      alert("logged in successfully!");
+
+    }
+    catch (error) {
+      console.error("Error logging in:", error.response?.data || error.message);
+      alert("login failed.");
+    }
   };
+
+
+
+
+
 
 
   return (
     <div className="flex h-screen w-full bg-white overflow-hidden">
 
-      {/* LEFT SIDE: Animation & Branding Section */}
+      {/* LEFT SIDE */}
       <div className="hidden lg:block lg:w-1/2 h-full relative overflow-hidden bg-slate-950 simple-curve  shadow-2xl">
 
-        {/* The LightPillar Animation - Absolute positioning to act as a background */}
+        {/* The LightPillar Animation */}
         <div className="absolute inset-0 z-0">
           <Particles
             particleColors={["#ffffff"]}
@@ -38,7 +64,7 @@ function Login() {
           />
         </div>
 
-        {/* Content Overlay - Positioned over the animation */}
+        {/* Content Overlay  */}
         <div className="relative z-10 h-full w-full flex flex-col justify-end p-16 bg-gradient-to-t from-black/60 via-transparent to-transparent">
 
 
@@ -57,7 +83,7 @@ function Login() {
         </div>
       </div>
 
-      {/* RIGHT SIDE: Login Form Section */}
+      {/* RIGHT SIDE*/}
       <div className="w-full lg:w-1/2 h-full bg-white flex items-center justify-center px-8 sm:px-12">
         <div className="w-full max-w-md">
           <motion.div

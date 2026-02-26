@@ -3,23 +3,59 @@ import { Link } from 'react-router-dom';
 import Particles from '../asset/background.jsx';
 import { motion } from "framer-motion";
 import { useState } from 'react';
+import axios from 'axios';
 
 function Signup() {
   const [usernameReg, setUsernameReg] = useState('')
   const [passwordReg, setPasswordReg] = useState('')
+  const [firstnameReg, setFirstnameReg] = useState('')
+  const [lastnameReg, setLastnameReg] = useState('')
+
   const [emailReg, setEmailReg] = useState('')
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    console.log(" in with:", { emailReg, passwordReg, usernameReg });
 
-  }
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+
+
+
+
+    const userData = {
+      username: usernameReg,
+      password: passwordReg,
+      firstname: firstnameReg,
+      lastname: lastnameReg,
+      email: emailReg
+    };
+
+
+
+
+    try {
+
+      const response = await axios.post('http://localhost:5000/register', userData);  /* will be replaced by the backend URL*/
+
+      console.log("Success:", response.data);
+      alert("Account created successfully!");
+
+    }
+    catch (error) {
+      console.error("Error signing up:", error.response?.data || error.message);
+      alert("Registration failed.");
+    }
+  };
+
+
+
+
 
 
   return (
     <div className="flex h-screen w-full bg-white overflow-hidden">
 
-      {/* LEFT SIDE: 40% Width with Simple Curve */}
+      {/* LEFT SIDE */}
       <div className="hidden lg:block lg:w-[50%] h-full relative overflow-hidden bg-slate-950 simple-curve shadow-2xl">
         <div className="absolute inset-0 z-0">
           <Particles
@@ -50,8 +86,8 @@ function Signup() {
         </div>
       </div>
 
-      {/* RIGHT SIDE: 60% Width & Compact Form */}
-      <div className="w-full lg:w-[50%] h-full bg-white flex items-center justify-center px-8 sm:px-12 overflow-y-auto">
+      {/* RIGHT SIDE*/}
+      <div className="w-full lg:w-[50%] h-full bg-white flex justify-center overflow-y-auto px-8 sm:px-12 py-12">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -59,7 +95,7 @@ function Signup() {
           className="w-full max-w-sm py-12"
         >
           {/* Header Section */}
-          <div className="mb-8 text-center lg:text-left">
+          <div className="mb-0 text-center lg:text-left ">
             <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
               Create account
             </h1>
@@ -69,11 +105,37 @@ function Signup() {
           </div>
 
           {/* Form with Smaller Inputs */}
-          <form className="space-y-4" onSubmit={handleLogin}>
+          <form className="space-y-4" onSubmit={handleRegister}>
 
-            {/* Full Name */}
+            {/* First Name */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-semibold text-gray-600 ml-1">Full Name</label>
+              <label className="text-sm font-semibold text-gray-600 ml-1">First Name</label>
+              <input
+                type="text"
+                onChange={(e) => { setFirstnameReg(e.target.value) }}
+
+                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all text-sm placeholder:text-gray-400"
+              />
+            </div>
+
+            {/* Last Name */}
+
+
+            <div className="flex flex-col gap-1.5">
+              <label className="text-sm font-semibold text-gray-600 ml-1">Last Name</label>
+              <input
+                type="text"
+                onChange={(e) => { setLastnameReg(e.target.value) }}
+
+                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all text-sm placeholder:text-gray-400"
+              />
+            </div>
+
+
+            {/*username */}
+
+            <div className="flex flex-col gap-1.5">
+              <label className="text-sm font-semibold text-gray-600 ml-1">Username</label>
               <input
                 type="text"
                 onChange={(e) => { setUsernameReg(e.target.value) }}
@@ -81,7 +143,6 @@ function Signup() {
                 className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none transition-all text-sm placeholder:text-gray-400"
               />
             </div>
-
             {/* Email */}
             <div className="flex flex-col gap-1.5">
               <label className="text-sm font-semibold text-gray-600 ml-1">Email Address</label>
