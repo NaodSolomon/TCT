@@ -69,8 +69,9 @@ function Signup() {
             disableRotation={false}
             pixelRatio={1}
           />
+          
         </div>
-
+         
         <div className="relative z-10 h-full w-full flex flex-col justify-end p-16 bg-gradient-to-t from-black/60 via-transparent to-transparent">
           <div className="max-w-md">
             <motion.div
@@ -87,7 +88,7 @@ function Signup() {
       </div>
 
       {/* RIGHT SIDE*/}
-      <div className="w-full lg:w-[50%] h-full bg-white flex justify-center overflow-y-auto px-8 sm:px-12 py-12">
+      <div className="w-full lg:w-[50%] h-full bg-white flex justify-center overflow-y-auto px-8 sm:px-12 py-5">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -95,7 +96,7 @@ function Signup() {
           className="w-full max-w-sm py-12"
         >
           {/* Header Section */}
-          <div className="mb-0 text-center lg:text-left ">
+          <div className="mb-3 text-center lg:text-left ">
             <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
               Create account
             </h1>
@@ -195,9 +196,9 @@ function Signup() {
             </button>
           </form>
 
-          <p className="text-center mt-8 text-gray-600 text-sm">
+          <p className="text-center mt-8 text-gray-600 text-sm py-5">
             Already have an account? {' '}
-            <Link to="/" className="text-purple-900 font-bold hover:text-purple-600 transition-colors">
+            <Link to="/" className="text-purple-900 font-bold hover:text-purple-600 transition-colors ">
               Log in
             </Link>
           </p>
